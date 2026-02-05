@@ -1,0 +1,222 @@
+// working login.jsx example
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import "../styles/login.css";
+import { auth } from "../firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+
+console.log("Firebase Auth:", auth);
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const [success, setSuccess] = useState(false);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log("User logged in:", userCredential.user);
+    alert("Login successful!");
+    setError("");
+    setSuccess(true); // correct details
+  } catch (err) {
+    console.error(err);
+    alert("Login failed. Please check your email and password.");
+    setError("Invalid email or password");
+    setSuccess(false);
+  }
+};
+  return (
+    <motion.div
+      className="login-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.div
+        className="glass-card"
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <h1>Task Tracker</h1>
+        <p className="login-subtitle">Welcome back. Please login.</p>
+
+        <form onSubmit={handleSubmit} className="login-form">
+
+          {/* EMAIL */}
+          <div className="input-group">
+            <input
+              type="email"
+              placeholder=" "
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <label>Email</label>
+          </div>
+
+          {/* PASSWORD */}
+          <div className="input-group">
+            <input
+              type="password"
+              placeholder=" "
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label>Password</label>
+          </div>
+
+          <motion.button
+            type="submit"
+            className="login-btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Sign In
+          </motion.button>
+
+         
+
+        </form>
+
+        <span className="hint">Forgot password?</span>
+        <p className="login-footer">© 2026 Task Tracker</p>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// working login.css example
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* Background */
+.login-page {
+  height: 100vh;
+  background: linear-gradient(-45deg, #6a11cb, #2575fc, #6a11cb);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass Card */
+.glass-card {
+  width: 350px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 50px rgba(0,0,0,0.2);
+  color: white;
+  text-align: center;
+}
+
+/* Subtitle */
+.login-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  width: 100px;
+}
+/* Wrapper */
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Input  */
+.input-group input {
+  width: 270%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.948);
+  border-radius: 10px;
+  color: rgb(14, 1, 1);
+  outline: none;
+  font-size: 14px;
+}
+
+/* Label */
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  color: rgba(65, 51, 91, 0.7);
+  font-size: 14px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: 0.3s ease;
+  background: transparent;
+}
+
+/* Floating effect */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  background: rgba(174, 162, 162, 0.3);
+  padding: 0 6px;
+  border-radius: 5px;
+}
+
+
+/* Button */
+.login-btn {
+  width: 270%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff8a00, #e52e71);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  }
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.hint {
+  display: block;
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 12px;
+  opacity: 0.6;
+}

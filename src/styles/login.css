@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow: auto;
+}
+
+/* Background with animated gradient */
+.login-page {
+  height: 100vh;
+  background: linear-gradient(-45deg, var(--bg-dark) 0%, var(--bg-darker) 25%, var(--accent-pink) 50%, var(--bg-darker) 75%, var(--bg-dark) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}  
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animated background elements */
+.login-page::before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.login-page::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -50px;
+  left: -50px;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(30px); }
+}
+
+/* Premium Glass Card */
+.glass-card {
+  width: 420px;
+  padding: 50px 45px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 35px 60px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+}
+
+/* Title styling */
+.glass-card h1 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+/* Subtitle styling */
+.login-subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 35px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.login-form {
+  width: 100%;
+}
+
+/* Input Group Wrapper */
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+/* Input & Select Styling */
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.input-group input::placeholder,
+.input-group select::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Label Styling */
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  background: transparent;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Floating Label Effect */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group select:focus + label {
+  top: -10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  background: var(--accent-pink-12);
+  padding: 0 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}  
+
+/* Select specific styling */
+.input-group select {
+  cursor: pointer;
+  color: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='white' d='M7 10L1 4h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.input-group select option {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px;
+  font-weight: 500;
+}
+
+.role-select {
+  width: 100%;
+}
+
+/* Premium Button */
+.login-btn {
+  width: 100%;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-pink-2) 100%);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px var(--box-shadow-pink);
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}  
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+  background: linear-gradient(135deg, #764ba2 0%, #f093fb 50%, #667eea 100%);
+}
+
+.login-btn:active {
+  transform: translateY(-1px);
+}
+
+.hint {
+  display: block;
+  margin-top: 20px;
+  font-size: 13px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.hint a {
+  color: var(--accent-pink-2);
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}  
+
+.hint a:hover {
+  color: white;
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+}
+
+.login-footer {
+  margin-top: 28px;
+  font-size: 12px;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.login-footer a {
+  color: #ffeb3b;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.login-footer a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Premium Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Premium Modal Content */
+.modal-content {
+  background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-pink-2) 100%);
+  padding: 50px 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  min-width: 320px;
+  color: var(--text);
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideUp 0.4s ease;
+}  
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content.error {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff6b6b 100%);
+}
+
+/* Modal Icon */
+.modal-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  display: block;
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.modal-content p {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glass-card {
+    width: 90%;
+    max-width: 420px;
+    padding: 40px 35px;
+  }
+
+  .modal-content {
+    min-width: 280px;
+    padding: 40px 30px;
+  }
+
+  .login-page::before {
+    width: 300px;
+    height: 300px;
+    top: -80px;
+    right: -80px;
+  }
+
+  .login-page::after {
+    width: 200px;
+    height: 200px;
+    bottom: -40px;
+    left: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 35px 25px;
+  }
+
+  .glass-card h1 {
+    font-size: 28px;
+  }
+
+  .login-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .modal-content {
+    min-width: 260px;
+    padding: 35px 25px;
+  }
+
+  .modal-icon {
+    font-size: 48px;
+  }
+
+  .login-page::before,
+  .login-page::after {
+    display: none;
+  }
+}

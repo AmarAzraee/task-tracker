@@ -1,0 +1,49 @@
+/* Black & Pink theme variables */
+:root {
+  --bg-dark: #0b0b0b;
+  --bg-darker: #080808;
+
+  --accent-pink: #ff4da6;
+  --accent-pink-2: #ff79c6;
+
+  --accent-pink-06: rgba(255, 77, 166, 0.06);
+  --accent-pink-2-06: rgba(255, 121, 198, 0.06);
+  --accent-pink-08: rgba(255, 77, 166, 0.08);
+  --accent-pink-12: rgba(255, 77, 166, 0.12);
+  --accent-pink-2-20: rgba(255, 121, 198, 0.2);
+
+  --card-bg: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.08);
+  --glass-strong: rgba(255,255,255,0.12);
+
+  --muted: rgba(255,255,255,0.75);
+  --muted-60: rgba(255,255,255,0.6);
+  --text: #ffffff;
+
+  --box-shadow-pink: rgba(255,77,166,0.3);
+  --box-shadow-pink-2: rgba(255,77,166,0.4);
+
+  --border-muted: rgba(255,255,255,0.15);
+  --border-weak: rgba(255,255,255,0.06);
+
+  --status-pending-bg: rgba(255,77,166,0.12);
+  --status-pending-color: #ff79c6;
+  --status-completed-bg: rgba(180,180,180,0.08);
+  --status-completed-color: #cfcfcf;
+}
+
+/* Apply base page styles so variables take effect immediately */
+html, body {
+  height: 100%;
+  background: var(--bg-dark);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100%;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+}

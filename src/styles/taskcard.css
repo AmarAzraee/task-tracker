@@ -1,0 +1,125 @@
+.task-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border-left: 5px solid #ff4da6;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.task-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.task-card.completed {
+  opacity: 0.6;
+  border-left-color: #26c485;
+}
+
+.task-card.overdue {
+  border-left-color: #f5576c;
+  background: rgba(245, 87, 108, 0.05);
+}
+
+.task-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.task-checkbox input {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  color: var(--text);
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.task-card.completed .task-title {
+  text-decoration: line-through;
+  color: rgba(255,255,255,0.6);
+}
+
+.task-description {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}  
+
+.delete-btn {
+  background: var(--accent-pink);
+  color: var(--text);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}  
+
+.delete-btn:hover {
+  background: #d63447;
+  transform: scale(1.1);
+}
+
+.task-footer {
+  border-top: 1px solid var(--border-weak);
+  padding-top: 12px;
+}  
+
+.task-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.priority-badge {
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.category-badge {
+  background: var(--accent-pink-08);
+  color: var(--accent-pink-2);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}  
+
+.due-date {
+  color: #666;
+  font-size: 13px;
+}
+
+.due-date.overdue-text {
+  color: #f5576c;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .task-header {
+    flex-direction: column;
+  }
+
+  .task-meta {
+    justify-content: space-between;
+  }
+}
