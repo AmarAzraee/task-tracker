@@ -46,7 +46,7 @@ export default function Login() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <h1>Task Tracker</h1>
-        <p className="login-subtitle">Welcome back. Please login.</p>
+        <p className="login-subtitle">Welcome back. Please login laa.</p>
 
         <form onSubmit={handleSubmit} className="login-form">
 
